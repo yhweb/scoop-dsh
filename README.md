@@ -10,6 +10,7 @@ Scoop 官方 bucket 收录门槛高、审核慢，一大批最近才冒出来的
 | 软件 | 版本 | 说明 |
 | --- | --- | --- |
 | [pane](https://github.com/LBEILC/Pane) | 0.1.209 | Windows 11 启动器 / 鼠标手势 / 剪贴板工具。上游只有自制的 .NET 安装壳（GUI），本 manifest 直接从中抽出内嵌 payload 解包，所以不需要管理员权限，也不写系统注册表。装完请在「设置 → 关于」关掉自带自动更新，改用 `scoop update pane` |
+| [purrge](https://github.com/RabbittuX/purrge) | 0.3.4 | AI 磁盘清理助手（Windows/macOS）。官方只发 PowerShell Gallery 模块，这里用原生 Scoop 方式拆包：把 nupkg 解到 app 目录、生成 `purrge` 包装器，数据仍在 `%PURRGE_HOME%`（默认 `~/.purrge`）。需要 Python 3.8+
 
 ## 安装与使用
 
