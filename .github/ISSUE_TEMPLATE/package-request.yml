@@ -1,0 +1,56 @@
+name: 📦 Package Request
+description: 申请收录一个还没进 bucket 的软件
+title: "[Request]: "
+labels: ["package-request"]
+body:
+- type: checkboxes
+  attributes:
+    label: Prerequisites
+    options:
+    - label: 我已搜索过本仓库的 issue / PR，确认没有重复提交
+      required: true
+    - label: 我已确认官方 main / extras / versions / nonportable bucket 里都没有这个软件
+      required: true
+- type: checkboxes
+  attributes:
+    label: 收录标准（本 bucket 的判据）
+    options:
+    - label: 有稳定的 Windows 二进制下载地址（zip / exe / msi / 单文件），不是只给网盘链接
+      required: true
+    - label: 开源或免费可用，非破解、非注入/外挂类用途（纯 npm 形态的 dsh 插件不收，请直接用 dsh plugin add）
+      required: true
+    - label: 能（或很可能能）写出 checkver + autoupdate，让版本自动跟进
+      required: true
+- type: input
+  id: name
+  attributes:
+    label: 软件名（用作 manifest 文件名）
+    description: 小写、短横线分隔，例如 dsh-state-notifier
+  validations:
+    required: true
+- type: input
+  id: description
+  attributes:
+    label: 一句话说明
+  validations:
+    required: true
+- type: input
+  id: homepage
+  attributes:
+    label: 主页 / 仓库地址
+  validations:
+    required: true
+- type: textarea
+  id: download-link
+  attributes:
+    label: 下载地址
+    description: 直接可下载的 Windows 产物链接（GitHub Releases 直链最佳）
+  validations:
+    required: true
+- type: textarea
+  id: notes
+  attributes:
+    label: 安装/卸载注意点
+    description: 是否需要解压子目录、是否需要写注册表、是否有便携配置目录（persist）等
+  validations:
+    required: false
