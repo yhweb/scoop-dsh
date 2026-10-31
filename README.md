@@ -13,6 +13,7 @@ Scoop 官方 bucket 收录门槛高、审核慢，一大批最近才冒出来的
 | [purrge](https://github.com/RabbittuX/purrge) | 0.3.4 | AI 磁盘清理助手（Windows/macOS）。官方只发 PowerShell Gallery 模块，这里用原生 Scoop 方式拆包：把 nupkg 解到 app 目录、生成 `purrge` 包装器，数据仍在 `%PURRGE_HOME%`（默认 `~/.purrge`）。需要 Python 3.8+
 | [gitport-github](https://github.com/zhidian-cmd/gitport-github) | 0.5.1 | GitHub 加速器（本机代理 + 托盘，接管系统代理、退出自动还原）。单文件 exe，`bin` 暴露 `gitport-github` 命令，`-tray` 开机驻留
 | [workbuddy-switch](https://github.com/changexbc/workbuddy-switch) | 0.1.62 | WorkBuddy/CodeBuddy 多账号切换（Tauri）。Windows 只有 NSIS 安装器，静默装到 Scoop 目录，卸载走安装器自带 uninstall.exe
+| [zen-gate](https://github.com/LAGcomcom/zen-gate) | 1.9.3 | 把 OpenCode Zen 免费模型接进各种 Agent 的托盘网关（Go 单文件 exe，双击即用）
 
 ## 安装与使用
 
