@@ -25,8 +25,8 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/anywhere-labs/dsh-desktop/releases?per_page=40",
-        "regex": "\"tag_name\":\"v([\\d.]+)-next\""
+        "url": "https://github.com/anywhere-labs/dsh-desktop/releases.atom",
+        "regex": "releases/tag/v([\\d.]+)-next"
     },
     "autoupdate": {
         "architecture": {
