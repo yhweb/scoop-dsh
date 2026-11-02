@@ -16,6 +16,7 @@ Scoop 官方 bucket 收录门槛高、审核慢，一大批最近才冒出来的
 | [zen-gate](https://github.com/LAGcomcom/zen-gate) | 1.9.3 | 把 OpenCode Zen 免费模型接进各种 Agent 的托盘网关（Go 单文件 exe，双击即用）
 | [tick-stock-panel](https://github.com/shy3130/tick-stock-panel) | 0.3.24 | A 股自建量化工作台（TSP）。Inno Setup 安装包，静默装到 Scoop 目录、卸载走 unins000.exe
 | [minidock](https://github.com/wang01116/MiniDock) | 1.6.5 | 极简 Windows dock 栏，单文件 exe（下载即改名 MiniDock.exe）
+| [2.4g-battery-viewer](https://github.com/yszyszysz233/2.4G-battery-viewer) | f0e983e | 读 2.4G 无线鼠标/耳机电量（纯 Python 源码包，生成 battery-viewer / battery-viewer-tray 两个命令）
 | [kazumi](https://github.com/Predidit/Kazumi) | 2.4.2 | 番剧采集/在线观看（Flutter，扁平 zip 便携） |
 | [animeko](https://github.com/open-ani/animeko) | 6.4.0 | 弹幕追番平台（zip 内单根目录 Ani/） |
 | [algermusicplayer](https://github.com/algerkong/AlgerMusicPlayer) | 5.1.0 | 第三方音乐播放器（NSIS 静默安装） |
