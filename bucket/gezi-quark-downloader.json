@@ -1,20 +1,19 @@
 {
-    "##": "Flat portable zip: GeZi.exe at archive root.",
+    "##": "Flat win64 zip with a single top-level folder (鸽子下载).",
     "version": "2.3.1",
-    "description": "鸽子下载 —— 夸克/网盘高速下载器（边下边看）",
+    "description": "夸克网盘下载器（开源，支持边下边看）",
     "homepage": "https://github.com/huaotem-bot/gezi-quark-downloader",
     "license": {
         "identifier": "GPL-3.0-only",
         "url": "https://github.com/huaotem-bot/gezi-quark-downloader/blob/main/LICENSE"
     },
-    "notes": "便携版，解包即用",
     "architecture": {
         "64bit": {
             "url": "https://github.com/huaotem-bot/gezi-quark-downloader/releases/download/v2.3.1/GeZi-v2.3.1-win64.zip",
             "hash": "87e77837d788d9ca8769bf1c5d9c90d33ef6c6fb9f37459294697728461b21ac"
         }
     },
-    "bin": "GeZi.exe",
+    "extract_dir": "鸽子下载",
     "shortcuts": [
         [
             "GeZi.exe",

@@ -1,15 +1,15 @@
 {
-    "##": "Inno Setup installer (packaging script in repo). Installed silently with /DIR into the scoop dir; removal uses Inno's unins000.exe.",
+    "##": "Inno Setup installer (installer/*.iss); installed silently with /DIR into the scoop dir, removed via unins000.exe.",
     "version": "1.5.9",
-    "description": "开源 Windows 桌面整理工具（自动归类桌面图标）",
+    "description": "Windows 桌面整理工具（开源，桌面图标分区归类）",
     "homepage": "https://github.com/Tianyu199509/DeskBox",
     "license": {
         "identifier": "GPL-3.0-only",
         "url": "https://github.com/Tianyu199509/DeskBox/blob/main/LICENSE"
     },
     "notes": [
-        "Windows 版是 Inno Setup 安装包，本 manifest 用 /VERYSILENT 装进 Scoop 目录",
-        "卸载调用安装器自带的 unins000.exe"
+        "上游只发 Inno Setup 安装包，本 manifest 用 /VERYSILENT 静默装到 Scoop 目录",
+        "卸载走安装器自带的 unins000.exe"
     ],
     "architecture": {
         "64bit": {
@@ -26,10 +26,7 @@
         ]
     },
     "uninstaller": {
-        "script": [
-            "$u = Join-Path $dir 'unins000.exe'",
-            "if (Test-Path -LiteralPath $u) { Start-Process -FilePath $u -ArgumentList '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART' -Wait }"
-        ]
+        "script": "foreach ($u in @((Join-Path $dir 'unins000.exe'), (Join-Path $env:LOCALAPPDATA 'DeskBox\\unins000.exe'))) { if (Test-Path -LiteralPath $u) { Start-Process -FilePath $u -ArgumentList '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART' -Wait; break } }"
     },
     "checkver": {
         "url": "https://github.com/Tianyu199509/DeskBox/releases.atom",

@@ -1,16 +1,12 @@
 {
-    "##": "Flat portable zip: jietuba_lite.exe at archive root. Upstream tags are 'release-<ver>'.",
+    "##": "Flat win64 zip: jietuba_lite.exe at the archive root.",
     "version": "2.2.1",
-    "description": "截图/剪贴板历史工具（截图钉屏 + 剪贴板历史 + 翻译）",
+    "description": "截图 + 剪贴板历史工具（jietuba lite）",
     "homepage": "https://github.com/1003129155/jietuba",
     "license": {
         "identifier": "MIT",
         "url": "https://github.com/1003129155/jietuba/blob/main/LICENSE"
     },
-    "notes": [
-        "便携版，解包即用",
-        "jietuba 分 lite / pp 两个构建，这里收 lite"
-    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/1003129155/jietuba/releases/download/release-2.2.1/jietuba_lite-release-2.2.1-x64.zip",

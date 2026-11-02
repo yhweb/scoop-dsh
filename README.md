@@ -16,6 +16,12 @@ Scoop 官方 bucket 收录门槛高、审核慢，一大批最近才冒出来的
 | [zen-gate](https://github.com/LAGcomcom/zen-gate) | 1.9.3 | 把 OpenCode Zen 免费模型接进各种 Agent 的托盘网关（Go 单文件 exe，双击即用）
 | [tick-stock-panel](https://github.com/shy3130/tick-stock-panel) | 0.3.24 | A 股自建量化工作台（TSP）。Inno Setup 安装包，静默装到 Scoop 目录、卸载走 unins000.exe
 | [minidock](https://github.com/wang01116/MiniDock) | 1.6.5 | 极简 Windows dock 栏，单文件 exe（下载即改名 MiniDock.exe）
+| [contextmenumgr](https://github.com/PLFJY/ContextMenuMgr) | 1.7.10 | Win11 右键菜单管理器（自包含便携 zip） |
+| [gezi-quark-downloader](https://github.com/huaotem-bot/gezi-quark-downloader) | 2.3.1 | 夸克网盘下载器（win64 zip） |
+| [imewlconverter](https://github.com/studyzy/imewlconverter) | 3.6.0 | 深蓝词库转换，CLI + GUI（win-x64 zip） |
+| [jietuba](https://github.com/1003129155/jietuba) | 2.2.1 | 截图 + 剪贴板历史（lite x64 zip） |
+| [inputtip](https://github.com/abgox/InputTip) | 3.6.12 | 输入法状态提示（单文件 exe） |
+| [serpent](https://github.com/dolag233/Serpent) | 0.3.3 | 个人资产管理（portable zip） |
 | [2.4g-battery-viewer](https://github.com/yszyszysz233/2.4G-battery-viewer) | f0e983e | 读 2.4G 无线鼠标/耳机电量（纯 Python 源码包，生成 battery-viewer / battery-viewer-tray 两个命令）
 - [airi](https://github.com/moeru-ai/airi) | 0.14.1 | AI 虚拟角色桌面伴侣（electron-builder NSIS，静默装 + 自带卸载器）
 - [msime-windows](https://github.com/metasequoiaime/msime-windows) | 0.13.1 | 水杉输入法（Inno Setup；TSF 输入法需官方安装器注册，另需 VC++ 2015-2022 x64）
