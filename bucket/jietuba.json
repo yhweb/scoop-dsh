@@ -1,0 +1,42 @@
+{
+    "##": "Flat portable zip: jietuba_lite.exe at archive root. Upstream tags are 'release-<ver>'.",
+    "version": "2.2.1",
+    "description": "截图/剪贴板历史工具（截图钉屏 + 剪贴板历史 + 翻译）",
+    "homepage": "https://github.com/1003129155/jietuba",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/1003129155/jietuba/blob/main/LICENSE"
+    },
+    "notes": [
+        "便携版，解包即用",
+        "jietuba 分 lite / pp 两个构建，这里收 lite"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/1003129155/jietuba/releases/download/release-2.2.1/jietuba_lite-release-2.2.1-x64.zip",
+            "hash": "45aa3f6ead902351c330328f66fb34185b1474670895e2bb269ec45b2830e173"
+        }
+    },
+    "bin": "jietuba_lite.exe",
+    "shortcuts": [
+        [
+            "jietuba_lite.exe",
+            "jietuba"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/1003129155/jietuba/releases.atom",
+        "regex": "releases/tag/release-([\\d.]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/1003129155/jietuba/releases/download/release-$version/jietuba_lite-release-$version-x64.zip"
+            }
+        },
+        "hash": {
+            "url": "https://api.github.com/repos/1003129155/jietuba/releases/tags/release-$version",
+            "regex": "\"name\":\"jietuba_lite-release-$version-x64\\.zip\".*?\"digest\":\"sha256:([0-9a-f]{64})\""
+        }
+    }
+}

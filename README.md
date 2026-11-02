@@ -17,6 +17,12 @@ Scoop 官方 bucket 收录门槛高、审核慢，一大批最近才冒出来的
 | [tick-stock-panel](https://github.com/shy3130/tick-stock-panel) | 0.3.24 | A 股自建量化工作台（TSP）。Inno Setup 安装包，静默装到 Scoop 目录、卸载走 unins000.exe
 | [minidock](https://github.com/wang01116/MiniDock) | 1.6.5 | 极简 Windows dock 栏，单文件 exe（下载即改名 MiniDock.exe）
 | [2.4g-battery-viewer](https://github.com/yszyszysz233/2.4G-battery-viewer) | f0e983e | 读 2.4G 无线鼠标/耳机电量（纯 Python 源码包，生成 battery-viewer / battery-viewer-tray 两个命令）
+- [airi](https://github.com/moeru-ai/airi) | 0.14.1 | AI 虚拟角色桌面伴侣（electron-builder NSIS，静默装 + 自带卸载器）
+- [msime-windows](https://github.com/metasequoiaime/msime-windows) | 0.13.1 | 水杉输入法（Inno Setup；TSF 输入法需官方安装器注册，另需 VC++ 2015-2022 x64）
+- [yunx-desktop](https://github.com/tidain/YunX-Desktop) | 1.3.3 | 云汐网盘聚合下载端（Inno Setup）
+- [mihome-windows](https://github.com/huanyuejue/MiHome-Windows) | 0.5.0 | 米家设备 Windows 客户端（便携 zip，extract_dir=MiHome-Windows）
+- [gezi-quark-downloader](https://github.com/huaotem-bot/gezi-quark-downloader) | 2.3.1 | 鸽子下载（便携 zip，扁平 GeZi.exe）
+- [jietuba](https://github.com/1003129155/jietuba) | 2.2.1 | 截图/剪贴板工具（便携 zip，扁平 jietuba_lite.exe；tag 形如 release-x.y.z）
 | [kazumi](https://github.com/Predidit/Kazumi) | 2.4.2 | 番剧采集/在线观看（Flutter，扁平 zip 便携） |
 | [animeko](https://github.com/open-ani/animeko) | 6.4.0 | 弹幕追番平台（zip 内单根目录 Ani/） |
 | [algermusicplayer](https://github.com/algerkong/AlgerMusicPlayer) | 5.1.0 | 第三方音乐播放器（NSIS 静默安装） |
