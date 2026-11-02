@@ -15,6 +15,7 @@ Scoop 官方 bucket 收录门槛高、审核慢，一大批最近才冒出来的
 | [workbuddy-switch](https://github.com/changexbc/workbuddy-switch) | 0.1.62 | WorkBuddy/CodeBuddy 多账号切换（Tauri）。Windows 只有 NSIS 安装器，静默装到 Scoop 目录，卸载走安装器自带 uninstall.exe
 | [zen-gate](https://github.com/LAGcomcom/zen-gate) | 1.9.3 | 把 OpenCode Zen 免费模型接进各种 Agent 的托盘网关（Go 单文件 exe，双击即用）
 | [tick-stock-panel](https://github.com/shy3130/tick-stock-panel) | 0.3.24 | A 股自建量化工作台（TSP）。Inno Setup 安装包，静默装到 Scoop 目录、卸载走 unins000.exe
+| [minidock](https://github.com/wang01116/MiniDock) | 1.6.5 | 极简 Windows dock 栏，单文件 exe（下载即改名 MiniDock.exe）
 
 ## 安装与使用
 
