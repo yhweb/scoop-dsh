@@ -1,0 +1,49 @@
+{
+    "##": "Inno Setup installer (packaging script in repo). Installed silently with /DIR into the scoop dir; removal uses Inno's unins000.exe.",
+    "version": "1.5.9",
+    "description": "开源 Windows 桌面整理工具（自动归类桌面图标）",
+    "homepage": "https://github.com/Tianyu199509/DeskBox",
+    "license": {
+        "identifier": "GPL-3.0-only",
+        "url": "https://github.com/Tianyu199509/DeskBox/blob/main/LICENSE"
+    },
+    "notes": [
+        "Windows 版是 Inno Setup 安装包，本 manifest 用 /VERYSILENT 装进 Scoop 目录",
+        "卸载调用安装器自带的 unins000.exe"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Tianyu199509/DeskBox/releases/download/v1.5.9/DeskBox_Setup_1.5.9_x64.exe",
+            "hash": "3b8fad94b8a0e0ae136572ae8da378c72c406c7c370f875212cb71b8cb586e4a"
+        }
+    },
+    "installer": {
+        "script": [
+            "$installer = Join-Path $dir $fname",
+            "$dirArg = '/DIR=\"{0}\"' -f $dir",
+            "Start-Process -FilePath $installer -ArgumentList '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART', $dirArg -Wait",
+            "Remove-Item $installer -Force"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$u = Join-Path $dir 'unins000.exe'",
+            "if (Test-Path -LiteralPath $u) { Start-Process -FilePath $u -ArgumentList '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART' -Wait }"
+        ]
+    },
+    "checkver": {
+        "url": "https://github.com/Tianyu199509/DeskBox/releases.atom",
+        "regex": "releases/tag/v([\\d.]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Tianyu199509/DeskBox/releases/download/v$version/DeskBox_Setup_$version_x64.exe"
+            }
+        },
+        "hash": {
+            "url": "https://api.github.com/repos/Tianyu199509/DeskBox/releases/tags/v$version",
+            "regex": "\"name\":\"DeskBox_Setup_$version_x64\\.exe\".*?\"digest\":\"sha256:([0-9a-f]{64})\""
+        }
+    }
+}
