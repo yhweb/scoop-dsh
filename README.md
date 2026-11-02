@@ -33,6 +33,7 @@ Scoop 官方 bucket 收录门槛高、审核慢，一大批最近才冒出来的
 | [animeko](https://github.com/open-ani/animeko) | 6.4.0 | 弹幕追番平台（zip 内单根目录 Ani/） |
 | [algermusicplayer](https://github.com/algerkong/AlgerMusicPlayer) | 5.1.0 | 第三方音乐播放器（NSIS 静默安装） |
 | [deskbox](https://github.com/Tianyu199509/DeskBox) | 1.5.9 | Windows 桌面整理（Inno Setup 静默安装） |
+| [codex-plus-plus](https://github.com/BigPizzaV3/CodexPlusPlus) | 2.1.4 | Codex++：AI 编程 Agent 统一管理应用（万物皆拓展 + 本地网关供应商池）。便携 zip 内只有 codex-plus-plus.exe，无安装器、不需管理员权限 |
 
 ## 安装与使用
 
