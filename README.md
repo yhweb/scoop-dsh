@@ -36,6 +36,7 @@ Scoop 官方 bucket 收录门槛高、审核慢，一大批最近才冒出来的
 | [codex-plus-plus](https://github.com/BigPizzaV3/CodexPlusPlus) | 2.1.4 | Codex++：AI 编程 Agent 统一管理应用（万物皆拓展 + 本地网关供应商池）。便携 zip 内只有 codex-plus-plus.exe，无安装器、不需管理员权限 |
 | [thorium-AVX512](https://github.com/gz83/thorium) | 156.0.8078.80 | Thorium 浏览器（安装版，Chromium 分支，AVX512 优化构建）。上游是 Chromium mini_installer，需要管理员且写 Program Files，本 manifest 抽取其内嵌 chrome.7z 解包到 Scoop 目录，静默安装、无需管理员权限 |
 | [thorium-AVX512-Portable](https://github.com/gz83/thorium) | 156.0.8078.80 | Thorium 浏览器（绿色/便携版，AVX512 优化构建）。解压即用的便携 zip，启动器 `BIN\thorium.exe`，`USER_DATA` 已 persist，升级不丢配置 |
+| [taskmonitor](https://github.com/linesoft2/TaskMonitor) | 2026.11.7.1 | 常驻任务栏/悬浮窗的进程级负载监控（CPU/内存/磁盘/GPU/网络五维，可下钻到进程）。单文件 exe，Apache-2.0，推荐 Win11；启动时会申请 UAC（上游设计） |
 
 ## 安装与使用
 
