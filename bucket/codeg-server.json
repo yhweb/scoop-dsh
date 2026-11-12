@@ -36,10 +36,6 @@
             "64bit": {
                 "url": "https://github.com/spacering-net/codeg/releases/download/v$version/codeg-server-windows-x64.zip"
             }
-        },
-        "hash": {
-            "url": "https://api.github.com/repos/spacering-net/codeg/releases/tags/v$version",
-            "regex": "\"name\":\"codeg-server-windows-x64\\.zip\".*?\"digest\":\"sha256:([0-9a-f]{64})\""
         }
     }
 }

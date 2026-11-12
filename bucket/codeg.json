@@ -40,10 +40,6 @@
             "64bit": {
                 "url": "https://github.com/spacering-net/codeg/releases/download/v$version/codeg_$version_x64-setup.exe"
             }
-        },
-        "hash": {
-            "url": "https://api.github.com/repos/spacering-net/codeg/releases/tags/v$version",
-            "regex": "\"name\":\"codeg_$version_x64-setup\\.exe\".*?\"digest\":\"sha256:([0-9a-f]{64})\""
         }
     }
 }
