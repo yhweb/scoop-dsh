@@ -1,5 +1,5 @@
 {
-    "##": "Chinese-localized fork of oh-my-pi (omp). Upstream only ships a single-file Windows x64 exe whose asset name has no version; the tag carries the '-zh' suffix, so version is like 18.18.1-zh. Packaged as 'omp-zh' with bin omp-zh.exe so it can coexist with the main-bucket oh-my-pi (which owns the 'omp' shim).",
+    "##": "Chinese-localized fork of oh-my-pi (omp). Scoop package name = oh-my-pi-zh (does not clash with main-bucket 'oh-my-pi'); the installed command/bin is omp-zh.exe so both can coexist.",
     "version": "18.18.1-zh",
     "description": "Oh My Pi (omp) 中文汉化版 —— 终端 AI 编码 agent，TUI/帮助/stats 全中文（上游 can1357/oh-my-pi 的汉化 fork，仅发 Windows x64 构建）",
     "homepage": "https://github.com/feigo313/oh-my-pi-zh",
@@ -8,10 +8,9 @@
         "url": "https://github.com/feigo313/oh-my-pi-zh/blob/master/LICENSE"
     },
     "notes": [
-        "安装：scoop install omp-zh；命令名为 omp-zh（与 main 桶 oh-my-pi 的 omp 并存，不冲突）",
-        "若想让它在命令行就是 omp（直接顶替官方版），先 scoop uninstall oh-my-pi",
+        "安装后命令名为 omp-zh（主桶 oh-my-pi 的 omp 保持不动，两者可共存）",
         "版本带 -zh 后缀（如 18.18.1-zh），通常落后于上游正式版",
-        "配置与数据在 %USERPROFILE%\\.omp，与官方版共用"
+        "配置与数据在 %USERPROFILE%\\.omp，与官方 oh-my-pi 共用"
     ],
     "architecture": {
         "64bit": {
@@ -20,6 +19,14 @@
         }
     },
     "bin": "omp-zh.exe",
+    "post_install": [
+        "Write-Host ''",
+        "Write-Host '[oh-my-pi-zh] 安装完成 / Installed.' -ForegroundColor Green",
+        "Write-Host '[oh-my-pi-zh] 命令: omp-zh    (官方 oh-my-pi 仍占用 omp)' -ForegroundColor Cyan",
+        "Write-Host '[oh-my-pi-zh] Try: omp-zh --version' -ForegroundColor Cyan",
+        "Write-Host '[oh-my-pi-zh] 配置目录: %USERPROFILE%\\.omp (与 oh-my-pi 共用)'",
+        "Write-Host ''"
+    ],
     "checkver": {
         "url": "https://github.com/feigo313/oh-my-pi-zh/releases.atom",
         "regex": "releases/tag/v([\\d.]+-zh)\""
