@@ -1,6 +1,6 @@
 {
     "##": "Headless self-hosted server (zip): codeg-server.exe / codeg-cli.exe / codeg-mcp.exe + web/. Zip asset name has no version; URL path carries the tag.",
-    "version": "0.43.0",
+    "version": "0.44.0",
     "description": "Codeg 自托管服务器 —— 无界面运行，用任意浏览器访问多智能体协作工作台；含 codeg-server / codeg-cli / codeg-mcp 三个可执行文件",
     "homepage": "https://github.com/spacering-net/codeg",
     "license": {
@@ -14,8 +14,8 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/spacering-net/codeg/releases/download/v0.43.0/codeg-server-windows-x64.zip",
-            "hash": "fd278e6eebb41fea3967d3df399281b129e2b6b1b4722c341c3c1bef5f455583"
+            "url": "https://github.com/spacering-net/codeg/releases/download/v0.44.0/codeg-server-windows-x64.zip",
+            "hash": "25d8a793d9730e11b6b2fccc01cb17fa309556e1394c3710c5521903a2148204"
         }
     },
     "extract_dir": "codeg-server-windows-x64",
