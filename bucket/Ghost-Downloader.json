@@ -1,6 +1,6 @@
 {
     "##": "Inno Setup 6.7 installer, silent install straight into the Scoop version dir (/DIR=$dir). The installer honours /NOICONS only partially: it still drops 'Ghost Downloader.lnk' into the user Programs folder, so that leftover is removed afterwards and the Scoop-managed shortcut (Scoop Apps) is the single entry point. Removal delegates to the bundled unins000.exe.",
-    "version": "4.5.7",
+    "version": "4.5.8",
     "description": "Ghost Downloader 3 — 多线程/多任务下载器（Python + PySide6/Qt 6 图形界面），支持 HTTP/磁力/BT、浏览器扩展接管、多协议下载与插件式功能包",
     "homepage": "https://github.com/XiaoYouChR/Ghost-Downloader-3",
     "license": {
@@ -15,8 +15,8 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/XiaoYouChR/Ghost-Downloader-3/releases/download/v4.5.7/Ghost-Downloader-v4.5.7-Windows-x86_64-Setup.exe",
-            "hash": "9c198484d55b5c50375e5b79fc372ecf4a0cde307b649b2451c91c09e49eb44f"
+            "url": "https://github.com/XiaoYouChR/Ghost-Downloader-3/releases/download/v4.5.8/Ghost-Downloader-v4.5.8-Windows-x86_64-Setup.exe",
+            "hash": "eac80c29f0ad2f2019b159c5527141f1919cf9c5ac5d35c3ac14c7f2f0bf4730"
         }
     },
     "installer": {
