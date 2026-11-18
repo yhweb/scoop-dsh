@@ -6,7 +6,8 @@
     "notes": [
         "双组件：magpie（CLI/控制台版，终端与脚本用）+ magpie-app（桌面 UI：菜单栏 / 窗口 / TUI / web UI）。二者来自同一个 release，scoop update usemagpie 会一起更新。",
         "首次运行 magpie-app 或 magpie serve 会在 127.0.0.1:3425 起本地 gateway；配置、密钥、网关凭据存在 %USERPROFILE%\\.config\\magpie。",
-        "UI 与 CLI 版本号一致（同为上游 release 版本），不是两个引擎。"
+        "UI 与 CLI 版本号一致（同为上游 release 版本），不是两个引擎。",
+        "桌面 app 的可执行文件已在本包内重命名为 magpie-app.exe：Magpie 会把原始文件名 magpie-windows-<arch>.exe 当成“下载的安装包”并弹出「安装到 %LOCALAPPDATA%\\Programs\\magpie」的对话框；改名后它直接在 scoop 目录原地运行，不再自我安装、不写 LOCALAPPDATA（配置仍在 %USERPROFILE%\\.config\\magpie）。"
     ],
     "architecture": {
         "64bit": {
@@ -24,15 +25,18 @@
                     "magpie"
                 ],
                 [
-                    "magpie-windows-amd64.exe",
+                    "magpie-app.exe",
                     "magpie-app"
                 ]
             ],
             "shortcuts": [
                 [
-                    "magpie-windows-amd64.exe",
+                    "magpie-app.exe",
                     "Magpie"
                 ]
+            ],
+            "pre_install": [
+                "Rename-Item \"$dir\\magpie-windows-amd64.exe\" 'magpie-app.exe'"
             ]
         },
         "arm64": {
@@ -50,15 +54,18 @@
                     "magpie"
                 ],
                 [
-                    "magpie-windows-arm64.exe",
+                    "magpie-app.exe",
                     "magpie-app"
                 ]
             ],
             "shortcuts": [
                 [
-                    "magpie-windows-arm64.exe",
+                    "magpie-app.exe",
                     "Magpie"
                 ]
+            ],
+            "pre_install": [
+                "Rename-Item \"$dir\\magpie-windows-arm64.exe\" 'magpie-app.exe'"
             ]
         }
     },
