@@ -1,6 +1,6 @@
 {
     "##": "Tauri desktop app (NSIS installer). Silent install /S /D=$dir; removal delegates to Tauri NSIS uninstaller. App data lives in %APPDATA%\\codeg, not managed by Scoop.",
-    "version": "0.46.0",
+    "version": "0.47.0",
     "description": "Codeg —— 多智能体协作编码工作台：一个界面聚合 Claude Code/Codex/OpenCode/Pi/Grok 等 20+ 智能体会话，支持会话迁移、@ 委派、后台待办、Git 工作树与仓库面板",
     "homepage": "https://github.com/spacering-net/codeg",
     "license": {
@@ -14,8 +14,8 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/spacering-net/codeg/releases/download/v0.46.0/codeg_0.46.0_x64-setup.exe",
-            "hash": "658f485410d78fb6f75618a77d38bc5fe87082d66af6fbda95a0df56aeeb9af6"
+            "url": "https://github.com/spacering-net/codeg/releases/download/v0.47.0/codeg_0.47.0_x64-setup.exe",
+            "hash": "5c62dca977f9ee04225c49e33f27e6375136d78b767c60add89d1b920029ac18"
         }
     },
     "installer": {
