@@ -1,6 +1,6 @@
 {
     "##": "win-x64 zip with cli/ and gui/ folders at the root.",
-    "version": "3.6.0",
+    "version": "3.7.0",
     "description": "深蓝词库转换（imewlconverter）：各输入法词库互转，命令行 + 图形界面",
     "homepage": "https://github.com/studyzy/imewlconverter",
     "license": {
@@ -9,8 +9,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/studyzy/imewlconverter/releases/download/v3.6.0/imewlconverter_win-x64.zip",
-            "hash": "c747b83727932590b0eed07578f7aca1bda1f436431eccf8ebc9f990ce682362"
+            "url": "https://github.com/studyzy/imewlconverter/releases/download/v3.7.0/imewlconverter_win-x64.zip",
+            "hash": "b0837a5a21405ca726b90406054c212437854fe2d4c556ab7fc53d32d91c9820"
         }
     },
     "bin": [
