@@ -1,25 +1,25 @@
-﻿#Requires -Version 5.1
-# 权威副本：D:\Scoop\buckets\dsh\scripts\scoop-bucket-guard.ps1（CI 用这份，改这里再同步镜像）
-# 同步镜像：D:\USER_ENV\.dsh\scripts\scoop-bucket-guard.ps1
+#Requires -Version 5.1
+# Canonical copy: D:\Scoop\buckets\dsh\scripts\scoop-bucket-guard.ps1 (CI uses this one; edit here, then sync the mirror)
+# Mirror: D:\USER_ENV\.dsh\scripts\scoop-bucket-guard.ps1
 <#
 .SYNOPSIS
-  dsh bucket 巡检：找出上游已发版但 bucket 没跟上的清单，并对 manifest 做形态体检。
+  dsh bucket guard: find manifests whose upstream released a newer version, and lint manifest shape.
 .DESCRIPTION
-  两类检查：
-    1) 同步性：对每个 manifest 跑 scoop checkver（不写文件），输出 autoupdate available 即为落后；
-    2) 形态：顶层 url 含 $version、url 数组与 hash 数量不等、checkver.script 缺 regex、
-       autoupdate.hash 写成字面 sha256 —— 这四类都会让 autoupdate 静默失败或报错。
-  退出码：0 = 全部最新且无形态问题；1 = 有落后/报错/形态 FAIL；2 = 巡检自身失败。
+  Two kinds of checks:
+    1) sync: run scoop checkver per manifest (no writes); "autoupdate available" means outdated;
+    2) shape: top-level url containing $version, url/hash count mismatch, checkver.script without regex,
+       autoupdate.hash given as a literal sha256 -- all four silently break autoupdate.
+  Exit: 0 = everything current and clean; 1 = outdated/error/shape issue; 2 = guard itself failed.
 .PARAMETER BucketDir
-  bucket 目录（含 json 的那层），默认 D:\Scoop\buckets\dsh\bucket。
+  bucket directory (the folder holding the json files). Auto-detected: <repo>\bucket, else D:\Scoop\buckets\dsh\bucket.
 .PARAMETER App
-  只查指定清单（可多个，不带 .json）。
+  Only check these manifests (no .json suffix).
 .PARAMETER Fix
-  对落后的清单执行 checkver -Update（会改写文件）。
+  Run checkver -Update for outdated manifests (rewrites files).
 .PARAMETER SkipForm
-  跳过形态体检，只查同步性。
+  Skip the shape lint; sync only.
 .PARAMETER FormOnly
-  只做形态体检，完全不联网、不跑 checkver。
+  Shape lint only; fully offline, never runs checkver.
 .EXAMPLE
   powershell -File scoop-bucket-guard.ps1
 .EXAMPLE
@@ -51,14 +51,16 @@ function Get-ScoopRoot {
   return (Join-Path $home2 'scoop')
 }
 
+# scoop checkver prints through Write-Host (information stream): plain 2>&1 captures nothing,
+# which makes every verdict look up-to-date. Redirect all streams with *>&1.
 function Invoke-Checkver([string]$Name, [switch]$Update) {
   $prev = $ErrorActionPreference
   $ErrorActionPreference = 'Continue'
   try {
     if ($Update) {
-      $raw = & $script:Checkver -App $Name -Dir $script:BucketDir -Update 2>&1
+      $raw = & $script:Checkver -App $Name -Dir $script:BucketDir -Update *>&1
     } else {
-      $raw = & $script:Checkver -App $Name -Dir $script:BucketDir 2>&1
+      $raw = & $script:Checkver -App $Name -Dir $script:BucketDir *>&1
     }
     return ((@($raw) | ForEach-Object { [string]$_ }) -join $nl)
   } catch {
@@ -70,7 +72,7 @@ function Test-ManifestForm([string]$Path) {
   $issues = New-Object System.Collections.ArrayList
   $j = $null
   try { $j = Get-Content -LiteralPath $Path -Raw -Encoding UTF8 | ConvertFrom-Json }
-  catch { [void]$issues.Add('FAIL JSON 解析失败'); return $issues }
+  catch { [void]$issues.Add('FAIL cannot parse JSON'); return $issues }
   if ($j.architecture) {
     foreach ($a in @($j.architecture.PSObject.Properties.Name)) {
       $node = $j.architecture.$a
@@ -78,34 +80,34 @@ function Test-ManifestForm([string]$Path) {
       $h = @($node.hash | Where-Object { $_ })
       foreach ($one in $u) {
         if ($one -match '[\$](version|match)') {
-          [void]$issues.Add('FAIL architecture.' + $a + '.url 含 $version/$match：顶层不替换，必须写死版本')
+          [void]$issues.Add('FAIL architecture.' + $a + '.url contains $version/$match: top-level is never substituted, pin the version')
         }
       }
       if ($u.Count -gt 1 -and $h.Count -eq 1) {
-        [void]$issues.Add('FAIL architecture.' + $a + '：' + $u.Count + ' 个 url 但只有 1 个 hash')
+        [void]$issues.Add('FAIL architecture.' + $a + ': ' + $u.Count + ' urls but only 1 hash')
       }
       if ($u.Count -gt 1 -and $h.Count -gt 1 -and $u.Count -ne $h.Count) {
-        [void]$issues.Add('FAIL architecture.' + $a + '：url 与 hash 数量不等')
+        [void]$issues.Add('FAIL architecture.' + $a + ': url and hash counts differ')
       }
     }
   }
   $cv = $j.checkver
-  if (-not $cv) { [void]$issues.Add('WARN 没有 checkver：bot 永远不跟进') }
+  if (-not $cv) { [void]$issues.Add('WARN no checkver: the bot will never bump this manifest') }
   elseif ($cv -isnot [string]) {
-    if ($cv.script -and -not $cv.regex) { [void]$issues.Add('FAIL checkver.script 缺 checkver.regex') }
-    if ($cv.github -and -not $cv.regex -and $cv.script) { [void]$issues.Add('WARN checkver 同时给 github 与 script') }
+    if ($cv.script -and -not $cv.regex) { [void]$issues.Add('FAIL checkver.script without checkver.regex') }
+    if ($cv.github -and -not $cv.regex -and $cv.script) { [void]$issues.Add('WARN checkver sets both github and script') }
   }
   $au = $j.autoupdate
   if ($au) {
     foreach ($h in @($au.hash)) {
       if ($h -is [string] -and $h -match '^[a-fA-F0-9]{64}$') {
-        [void]$issues.Add('FAIL autoupdate.hash 是字面 sha256：会被当成 hash 模板 URL，报无效 URI；应省略或写 {url,regex}')
+        [void]$issues.Add('FAIL autoupdate.hash is a literal sha256: it is treated as a hash-template URL and fails with an invalid URI; omit it or use {url,regex}')
       }
     }
     $txt = ($au | ConvertTo-Json -Depth 12 -Compress)
-    if ($txt -notmatch '"url"') { [void]$issues.Add('WARN autoupdate 里没有 url：版本更新不会改下载地址') }
+    if ($txt -notmatch '"url"') { [void]$issues.Add('WARN autoupdate has no url: a version bump would not change the download address') }
   } elseif ($cv) {
-    [void]$issues.Add('WARN 有 checkver 没 autoupdate：bot 只报版本不改清单')
+    [void]$issues.Add('WARN checkver without autoupdate: the bot can only report the version, not bump the manifest')
   }
   return $issues
 }
@@ -125,7 +127,7 @@ if (-not $script:Checkver) {
   $script:Checkver = Join-Path $root 'apps\scoop\current\bin\checkver.ps1'
 }
 if (-not $FormOnly -and -not (Test-Path -LiteralPath $script:Checkver)) {
-  [Console]::Error.WriteLine('找不到 scoop checkver: ' + $script:Checkver)
+  [Console]::Error.WriteLine('cannot find scoop checkver: ' + $script:Checkver)
   exit 2
 }
 
@@ -139,7 +141,7 @@ $checked = 0
 
 foreach ($n in $names) {
   $file = Join-Path $script:BucketDir ($n + '.json')
-  if (-not (Test-Path -LiteralPath $file)) { [void]$errors.Add($n + '  清单不存在'); continue }
+  if (-not (Test-Path -LiteralPath $file)) { [void]$errors.Add($n + '  manifest not found'); continue }
   $checked++
   if ($FormOnly) {
     if (-not $SkipForm) { foreach ($i in (Test-ManifestForm $file)) { [void]$formIssues.Add($n + ': ' + [string]$i) } }
@@ -147,7 +149,9 @@ foreach ($n in $names) {
   }
   $text = Invoke-Checkver $n
   $isOutdated = $text -match 'autoupdate available'
-  $hasError = ($text -match '(?m)^\s*ERROR') -or ($text -match 'EXCEPTION') -or ($text -match 'Could not')
+  $hasError = ($text -match '(?m)^\s*ERROR') -or ($text -match 'EXCEPTION') -or
+    ($text -match 'Could not') -or ($text -match "couldn't match") -or ($text -match 'is not valid') -or
+    ($text -match '\(404\)') -or ($text -match '\u672a\u627e\u5230')
   if ($isOutdated) {
     $line = (@($text -split '\r?\n') | Where-Object { $_ -match 'scoop version is' } | Select-Object -First 1)
     if (-not $line) { $line = 'version differs' }
@@ -162,20 +166,20 @@ foreach ($n in $names) {
   }
 }
 
-Write-Host ('检查清单数: ' + $checked)
+Write-Host ('checked manifests: ' + $checked)
 if ($outdated.Count -gt 0) {
   Write-Host ''
-  Write-Host '[落后] 上游已有新版但 bucket 未跟进：' -ForegroundColor Yellow
+  Write-Host '[outdated] upstream has a newer release:' -ForegroundColor Yellow
   foreach ($x in $outdated) { Write-Host ('  - ' + $x) }
-} else { Write-Host '[落后] 无' -ForegroundColor Green }
+} else { Write-Host '[outdated] none' -ForegroundColor Green }
 if ($errors.Count -gt 0) {
   Write-Host ''
-  Write-Host '[报错] checkver 本身失败（多为上游形态变化）：' -ForegroundColor Red
+  Write-Host '[error] checkver itself failed (usually an upstream shape change):' -ForegroundColor Red
   foreach ($x in $errors) { Write-Host ('  - ' + $x) }
 }
 if ($formIssues.Count -gt 0) {
   Write-Host ''
-  Write-Host '[形态] 会让 autoupdate 失败或空转的写法：' -ForegroundColor Magenta
+  Write-Host '[shape] patterns that break or no-op autoupdate:' -ForegroundColor Magenta
   foreach ($x in $formIssues) { Write-Host ('  - ' + $x) }
 }
 
@@ -184,11 +188,11 @@ if ($Fix) {
   foreach ($x in $outdated) { [void]$targets.Add((([string]$x) -split '  ')[0]) }
   if ($targets.Count -gt 0) {
     Write-Host ''
-    Write-Host '[Fix] 逐个 checkver -Update ...'
+    Write-Host '[Fix] running checkver -Update for each outdated manifest ...'
     foreach ($n in $targets) {
       Write-Host ('  -> ' + $n)
       $r = Invoke-Checkver $n -Update
-      if ($r -match 'ERROR|EXCEPTION|Could not') {
+      if ($r -match 'ERROR|EXCEPTION|Could not|couldn''t match|is not valid') {
         $e = (@($r -split '\r?\n') | Where-Object { $_ -match 'ERROR|Exception|Could not' } | Select-Object -First 1)
         Write-Host ('     FAIL: ' + ([string]$e).Trim()) -ForegroundColor Red
       } else { Write-Host '     OK' -ForegroundColor Green }
