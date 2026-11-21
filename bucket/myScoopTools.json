@@ -1,11 +1,11 @@
 {
-    "version": "1.3.0",
+    "version": "1.3.1",
     "description": "My Scoop Tools - scoop-deepclean: one-click deep cleanup (scoop cleanup * + scoop cache rm * + bun/uv/pnpm cache with per-item confirmation; prompts to kill locking processes; uv cache-lock aware). aria2ghost: routes Scoop's aria2 downloads through Ghost Downloader CLI (ghd) with automatic aria2 fallback; manage via scoop-aria2ghost status|deploy|restore.",
     "homepage": "https://github.com/yhweb/myScoopTools",
     "license": "MIT",
     "depends": "aria2",
-    "url": "https://github.com/yhweb/myScoopTools/releases/download/v1.3.0/myScoopTools-1.3.0.zip",
-    "hash": "7b8a20e4ca6000b3c35f9bfc7bbb98f8fd1bb8cc6dbbd5b3fdba9fefd208612b",
+    "url": "https://github.com/yhweb/myScoopTools/releases/download/v1.3.1/myScoopTools-1.3.1.zip",
+    "hash": "61592ef719e1ab05bdbea928d1fd2bc70164b1efe2d045466cef1bfc1e744903",
     "notes": [
         "Commands: scoop-deepclean (-DryRun) | scoop-aria2ghost status|deploy|restore",
         "aria2ghost: Scoop downloads go through Ghost Downloader CLI (ghd.exe); without Ghost they fall back to the backed-up aria2 engine automatically.",
