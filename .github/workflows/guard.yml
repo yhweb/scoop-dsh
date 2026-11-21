@@ -34,4 +34,4 @@ jobs:
         env:
           SCOOP_HOME: ${{ github.workspace }}\scoop_core
         run: |
-          ./my_bucket/scripts/scoop-bucket-guard.ps1 -BucketDir ./my_bucket/bucket
+          ./my_bucket/scripts/scoop-bucket-guard.ps1 -BucketDir ./my_bucket/bucket -FormOnly

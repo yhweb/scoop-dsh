@@ -1,4 +1,6 @@
 ﻿#Requires -Version 5.1
+# 权威副本：D:\Scoop\buckets\dsh\scripts\scoop-bucket-guard.ps1（CI 用这份，改这里再同步镜像）
+# 同步镜像：D:\USER_ENV\.dsh\scripts\scoop-bucket-guard.ps1
 <#
 .SYNOPSIS
   dsh bucket 巡检：找出上游已发版但 bucket 没跟上的清单，并对 manifest 做形态体检。
