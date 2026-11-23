@@ -10,7 +10,8 @@
     "notes": [
         "上游只在 Windows 提供 NSIS 安装包，本清单解出内层 app-64.7z 平铺安装，不运行安装器",
         "安装包未经数字签名，首次启动 Windows SmartScreen 可能提示未知发布者",
-        "程序数据写在 %APPDATA%\\LearnHarness，自动更新器目录在 %LOCALAPPDATA%\\learnharness-updater（应用自身行为，不受 scoop 管理）"
+        "程序数据写在 %APPDATA%\\LearnHarness，自动更新器目录在 %LOCALAPPDATA%\\learnharness-updater（应用自身行为，不受 scoop 管理）",
+        "0.7.0 的 server payload 缺 @shikijs/core（上游 issue #897）：桌面窗口可正常打开，但内置 Next.js 首页 GET / 返回 500；官方安装器安装后表现相同，与本清单的解包方式无关，等上游修复"
     ],
     "architecture": {
         "64bit": {
