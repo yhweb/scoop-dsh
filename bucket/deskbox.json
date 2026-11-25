@@ -1,6 +1,6 @@
 {
     "##": "Inno Setup installer (installer/*.iss); installed silently with /DIR into the scoop dir, removed via unins000.exe.",
-    "version": "1.6.0",
+    "version": "1.6.2",
     "description": "Windows 桌面整理工具（开源，桌面图标分区归类）",
     "homepage": "https://github.com/Tianyu199509/DeskBox",
     "license": {
@@ -13,8 +13,8 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Tianyu199509/DeskBox/releases/download/v1.6.0/DeskBox_Setup_1.6.0_x64.exe",
-            "hash": "a3046666fedce9c33c51fc8e826a08d83788d3605b011814433e62bfaa6db828"
+            "url": "https://github.com/Tianyu199509/DeskBox/releases/download/v1.6.2/DeskBox_Setup_1.6.2_x64.exe",
+            "hash": "b23dbbe0e9cc84e1efda8f6a916bfafef4a8922f044c3363c55c86a0a9f4f600"
         }
     },
     "installer": {
