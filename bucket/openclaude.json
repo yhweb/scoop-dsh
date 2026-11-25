@@ -19,8 +19,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://registry.npmjs.org/@twigpine/openclaude/-/openclaude-$version.tgz",
-            "hash": "sha512-tFgYLYjkVVYT77qhiJIwB31FCJshxSz8g3svdXrKXar+X67lW1lBZEyLlg12Hsrigzz5F7XQvwVsQQA01U4tMg=="
+            "url": "https://registry.npmjs.org/@twigpine/openclaude/-/openclaude-0.37.0.tgz",
+            "hash": "sha512:b458182d88e4555613efbaa1889230077d45089b21c52cfc837b2f757aca5daafe5faee55b5941644c8b960d761ecae2833cf917b5d0bf056c410034d54e2d32"
         }
     },
     "extract_dir": "package",
@@ -51,7 +51,7 @@
                 "url": "https://registry.npmjs.org/@twigpine/openclaude/-/openclaude-$version.tgz",
                 "hash": {
                     "url": "https://registry.npmjs.org/@twigpine%2fopenclaude/$version",
-                    "regex": "\"integrity\"\\s*:\\s*\"(?<hash>sha512-[A-Za-z0-9+/=]+)\""
+                    "regex": "\"integrity\"\\s*:\\s*\"sha512-(?<hash>[A-Za-z0-9+/=]+)\""
                 }
             }
         }
