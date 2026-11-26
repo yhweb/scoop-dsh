@@ -41,5 +41,6 @@
                 "url": "https://github.com/zhugecaomao/ALTRun/releases/download/$version/ALTRun_v$version.zip"
             }
         }
-    }
+    },
+    "persist": "Data\\ALTRun.json;Data\\AppIndex.json;Data\\Knowledge.json;Data\\Usage.json;Data\\Update.json;Scripts"
 }
