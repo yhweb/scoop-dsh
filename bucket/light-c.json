@@ -12,7 +12,7 @@
         "在 LightC.exe 旁放 LightC.portable.json 可让程序把配置与 WebView 数据存到程序目录，否则走默认用户目录（Scoop 不接管）",
         "许可证为自定义 LightC Source Available License v1.0（源码可见，非 OSI 开源），商用或再分发前请先阅读 LICENSE",
         "上游 release 同时提供 setup.exe 与 webview2 离线安装包；本清单只收录便携版，需要系统级安装请用上游安装包",
-        "关闭程序自带自动更新，改用 scoop update lightc"
+        "关闭程序自带自动更新，改用 scoop update light-c"
     ],
     "architecture": {
         "64bit": {
@@ -20,12 +20,6 @@
             "hash": "7602e7f8a909008b5a12023195f8b03b63655eefb3caaaeae364943fc4f52ab3"
         }
     },
-    "bin": [
-        [
-            "LightC.exe",
-            "lightc"
-        ]
-    ],
     "shortcuts": [
         [
             "LightC.exe",
@@ -46,5 +40,16 @@
             "url": "https://github.com/Chunyu33/light-c/releases/download/v$version/SHA256SUMS.txt",
             "regex": "([0-9A-Fa-f]{64})\\s+LightC_portable_x64_v[\\d.]+\\.zip"
         }
-    }
+    },
+    "bin": [
+        [
+            "LightC.exe",
+            "light-c"
+        ]
+    ],
+    "persist": [
+        "config",
+        "data",
+        "webview"
+    ]
 }
