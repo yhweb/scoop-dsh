@@ -21,7 +21,7 @@
         }
     },
     "pre_install": [
-        "$d = Join-Path $env:LOCALAPPDATA 'videodown'",
+        "$d = Join-Path ([Environment]::GetFolderPath('LocalApplicationData')) 'videodown'",
         "New-Item -ItemType Directory -Path $d -Force | Out-Null",
         "$exe = Join-Path (Split-Path $dir -Parent) 'current/videodown/videodown.exe'",
         "$w = Join-Path $dir 'videodown.cmd'",
